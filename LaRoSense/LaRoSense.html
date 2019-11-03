@@ -1,0 +1,26 @@
+<!doctype HTML>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+
+        function test() {
+            $.getJSON("data.json", function (data) {
+                console.log(data);
+               // document.findviewbyid("data").innerhtml = data;
+            })
+
+
+        }
+
+    </script>
+    </head>
+    <body>
+
+        <input type="button" value="Start" onclick="test()"></input>
+
+        <p id="data"></p>
+
+    </body>
+</html>

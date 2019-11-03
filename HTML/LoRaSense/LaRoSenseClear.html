@@ -1,0 +1,106 @@
+<!doctype HTML>
+    <head>
+        <script>
+            
+        function test() {
+            $.getJSON("data.json", function (data) {
+                console.log(data);
+                document.getElementById("row0").innerHTML = data["payload_raw"]["data"][0];
+                document.getElementById("row1").innerHTML = data["payload_raw"]["data"][1];
+                document.getElementById("row2").innerHTML = data["payload_raw"]["data"][2];
+            })
+
+        }
+
+        $(function(){
+            test();
+            setInterval(function(){
+                test();
+            }, 2000);
+        });
+
+            function clear(){
+                document.form1.text1.value=' ';
+                document.form1.text2.value=' ';
+                document.form1.text3.value=' ';
+                document.form1.text4.value=' ';
+            }
+        
+        </script>
+        <style>
+            .p{
+                font-family: arial;
+                color: white;
+            }
+
+            .h1{
+                font-family: arial;
+                color: white;
+            }
+            .h3{
+                font-family: arial;
+                color: white;
+            }
+            .th{
+                font-family: arial;
+                color: white;
+            }
+            .td{
+                font-family: arial;
+                color: white;
+            }
+        </style>
+    </head>
+    <body class="hi" style="background-color:#334969;">
+        <form name="form1" class="form1">
+            <h1 class="h1">LoRaSense</h1>
+            <br>
+            <br>
+            <!--     
+                #393a4d
+                
+                style="background-image: linear-gradient(to right, rgb(26, 17, 17), rgb(94, 80, 80));">      -->
+
+            <input type="button" value="Clear" onclick="document.form1.tex1.value=''"></input>
+            <input type="button" value="Test" onclick="test()"></input>
+            <br>
+            <br>
+
+            <table style="width: 100%">
+                  <tr style="text-align: left;
+                            font-size: 24px;">
+                    <th class="th">Zeit</th>
+                    <th class="th">Temperatur</th>
+                    <th class="th">Luftfeuchtigkeit</th>
+                    <th class="th">Lautstärke</th>
+                  </tr>
+                  <tr id="row0">
+                    <td class="td">Jill</td>
+                    <td class="td">Smith</td>
+                    <td class="td">50</td>
+                    <td class="td" id="test">placeholder</td>
+                  </tr>
+                  <tr id="row1">
+                    <td class="td">Eve</td>
+                    <td class="td">Jackson</td>
+                    <td class="td">94</td>
+                    <td class="td">placeholder2</td>
+                  </tr>
+                  <tr id="row2">
+                        <td class="td">Eve</td>
+                        <td class="td">Jackson</td>
+                        <td class="td">94</td>
+                        <td class="td">placeholder2</td>
+                      </tr>
+            </table>
+            <br>
+            <br>
+            <h3 class="h3">Über uns</h3>
+            <p></p>
+            <p class="p">Dies ist eine Website, die im Rahmen des Jugend Hackt Ulm 2019 erstellt wurde.
+                Sie ist gedacht, um Sensordaten auslesen zu können.
+            Die Website läuft mit HTML und CSS.</p>
+        </form>
+    </body>
+
+</html>

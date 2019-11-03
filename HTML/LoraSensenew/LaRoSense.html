@@ -1,0 +1,90 @@
+<!doctype HTML>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+
+        var counter = 0;
+
+        function test() {
+            $.getJSON("data.json", function (data) {
+                console.log(data);
+                document.getElementById("showtemp").innerHTML += data["payload_raw"]["data"][0] + ", ";
+                document.getElementById("showhum").innerHTML += data["payload_raw"]["data"][1] + ", ";
+                document.getElementById("showsound").innerHTML += data["payload_raw"]["data"][2] + ", ";
+            })
+            counter = counter + 1;
+            if(counter > 10){
+                document.getElementById("showtemp").innerHTML = document.getElementById("showtemp").innerHTML.replace(/[0-9]+, /, "");
+                document.getElementById("showhum").innerHTML = document.getElementById("showhum").innerHTML.replace(/[0-9]+, /, "");
+                document.getElementById("showsound").innerHTML = document.getElementById("showsound").innerHTML.replace(/[0-9]+, /, "");
+                counter = counter - 1;
+            }
+        }
+
+        $(function(){
+            test();
+            setInterval(function(){
+                test();
+            }, 1000);
+        });
+        
+
+    </script>
+    <style>
+        .p{
+            color: white;
+            font-family: arial;
+            font-weight: bold;
+        }
+
+        .h1{
+            color: white;
+            font-family: arial;
+        }
+
+        .h3{
+            color: white;
+            font-family: arial;
+            font-size: 15px;
+        }
+
+        .des{
+            color: white;
+            font-family: arial;
+            font-size: 13px;
+        }
+
+        .bottom{
+            margin: 0px, 0px;
+            padding: 0px;
+            position: absolute;
+            bottom: 2%;
+        }
+    </style>
+    </head>
+    <body styLe="background-color: #393a4d;">
+
+        <h1 class="h1">LoRaSense</h1>
+        <br>
+        <br>
+        <p class="p">Temperatur: </p>
+        <span  class="p" id="showtemp"></span><span class="p"> °C</span>
+        <br>
+        <p class="p">Luftfeuchtigkeit: </p>
+        <span class="p" id="showhum"></span><span class="p" > %</span>   
+        <br>     
+        <p class="p" >Lautstärke: </p>
+        <span class="p" id="showsound"></span><span class="p" > dB</span>
+        <br>
+        <br>
+        <br>
+        <div class="bottom">
+        <h3 class="h3">Über uns</h3>
+        <p></p>
+        <p class="des">Dies ist eine Website, die im Rahmen des Jugend Hackt Ulm 2019 erstellt wurde.
+            Sie ist gedacht, um Sensordaten auslesen zu können.
+        Die Website läuft mit HTML und CSS.</p></div>
+    </body>
+</html>
